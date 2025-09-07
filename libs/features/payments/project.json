@@ -1,0 +1,10 @@
+{
+  "name": "features-payments",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "root": "libs/features/payments",
+  "sourceRoot": "libs/features/payments/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project features-payments --web",
+  "targets": {}
+}
