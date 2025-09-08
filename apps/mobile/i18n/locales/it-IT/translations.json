@@ -1,0 +1,335 @@
+{
+  "auth": {
+    "title": "Lanciare la tua prossima app mobile",
+    "title_emphasis": "è diventato più facile",
+    "continue_with_google": "Continua con Google",
+    "continue_with_email": "Continua con email",
+    "privacy_policy_agreement": "Registrandoti, accetti la nostra",
+    "privacy_policy_link": "politica sulla privacy",
+    "email_input": {
+      "title": "Inserisci la tua email",
+      "placeholder": "mario@esempio.com",
+      "continue": "Continua",
+      "back": "Indietro"
+    },
+    "magic_link": {
+      "title": "Controlla la tua email",
+      "sent_to": "Abbiamo inviato un'email a:",
+      "description": "Contiene un link magico che ti permetterà di accedere all'app",
+      "open_email": "Apri email"
+    }
+  },
+  "dashboard": {
+    "screen_title": "Pannello di controllo",
+    "welcome_title": "Benvenuto su Launchtoday",
+    "subtitle": "Launchtoday è un kit di avvio pronto per la produzione per lanciare la tua prossima app mobile di AI, chat, e-commerce (e altro).",
+    "quick_start": {
+      "title": "Avvio rapido",
+      "description": "Inizia rapidamente con la nostra configurazione predefinita. Inizia a costruire le funzionalità della tua app immediatamente senza le complicazioni della configurazione iniziale."
+    },
+    "latest_tools": {
+      "title": "Supporta gli ultimi strumenti",
+      "description": "Rimani aggiornato con gli strumenti e le librerie React Native più moderne. Manteniamo il codice base aggiornato con gli strumenti di sviluppo più recenti ed efficienti."
+    },
+    "support": {
+      "title": "Supporto e funzionalità continui",
+      "description": "Ricevi aggiornamenti continui e richieste di funzionalità guidate dalla comunità. Ci impegniamo a far evolvere Launchtoday in base alle esigenze degli sviluppatori."
+    }
+  },
+  "drawer": {
+    "home": "Casa",
+    "payments": "Pagamenti",
+    "profile": "Profilo",
+    "feedback": "La Retroazione",
+    "settings": "Impostazioni"
+  },
+  "payments": {
+    "screen_title": "Pagamenti",
+    "stripe": {
+      "title": "Stripe",
+      "description": "Effettua pagamenti singoli tramite l'interfaccia Stripe preconfigurata.",
+      "screen": {
+        "title": "Stripe",
+        "integration_title": "Integrazione Stripe",
+        "subtitle": "Elabora i pagamenti in modo sicuro con Stripe. Launchtoday è compatibile con Stripe per opzioni di pagamento flessibili e transazioni senza intoppi.",
+        "amount_label": "Inserisci l'importo:",
+        "amount_placeholder": "0.00",
+        "pay_with_stripe": "Paga con Stripe",
+        "or": "Oppure",
+        "errors": {
+          "client_secret": "Errore nell'ottenere il client secret",
+          "payment_sheet_init": "Si è verificato un problema con il pagamento",
+          "try_again": "Per favore riprova più tardi",
+          "apple_pay": "Si è verificato un problema con il pagamento Apple Pay",
+          "purchase_error": "Si è verificato un problema con l'acquisto",
+          "internal_error": "Errore interno durante il pagamento con Apple Pay",
+          "timeout": {
+            "payment": "La richiesta di pagamento è scaduta. Per favore riprova.",
+            "sheet_init": "L'inizializzazione del pagamento è scaduta. Per favore riprova.",
+            "presentation": "La presentazione del pagamento è scaduta. Per favore riprova.",
+            "platform_pay": "La conferma del pagamento è scaduta. Per favore riprova."
+          }
+        },
+        "alerts": {
+          "error": {
+            "title": "Errore di Pagamento",
+            "message": "Si è verificato un errore durante il pagamento. Per favore riprova."
+          }
+        },
+        "merchant": {
+          "name": "Example, Inc.",
+          "default_name": "Mario Rossi"
+        }
+      }
+    },
+    "revenuecat": {
+      "title": "RevenueCat",
+      "description": "Effettua acquisti in-app e abbonamenti.",
+      "screen": {
+        "title": "RevenueCat",
+        "integration_title": "Integrazione RevenueCat",
+        "subtitle": "Sblocca funzionalità premium con abbonamenti e acquisti singoli senza problemi.",
+        "purchase_single_item": "Acquista un articolo singolo",
+        "subscribe_button": "Abbonati a Launchtoday Plus",
+        "already_subscribed": "Sei già abbonato! 🎉",
+        "alerts": {
+          "already_subscribed": {
+            "title": "Già abbonato",
+            "message": "Hai già accesso alle funzionalità premium 🎉"
+          },
+          "success": {
+            "title": "Successo",
+            "message": "Il tuo acquisto è stato completato con successo!"
+          }
+        }
+      }
+    },
+    "superwall": {
+      "title": "Superwall",
+      "description": "Costruisci e testa paywall rapidamente senza necessità di aggiornamenti",
+      "coming_soon": "Prossimamente"
+    }
+  },
+  "profile": {
+    "screen_title": "Profilo",
+    "labels": {
+      "username": "Nome utente",
+      "website": "Sito web",
+      "bio": "Biografia"
+    },
+    "placeholders": {
+      "username": "Inserisci il tuo nome utente",
+      "website": "Inserisci il tuo sito web",
+      "bio": "Parlaci di te"
+    },
+    "status": {
+      "saving": "Salvataggio",
+      "saved": "Salvato"
+    },
+    "image": {
+      "errors": {
+        "too_large": "La dimensione dell'immagine supera il limite di 5MB",
+        "invalid_format": "Sono accettati solo i formati JPG e PNG",
+        "upload_failed": "Errore durante il caricamento dell'immagine",
+        "url_invalid": "Errore nell'ottenere l'URL dell'immagine",
+        "picker_failed": "Errore durante la selezione dell'immagine"
+      },
+      "alerts": {
+        "upload_error": "Errore di caricamento",
+        "selection_error": "Errore di selezione"
+      }
+    }
+  },
+  "feedback": {
+    "screen_title": "Feedback",
+    "segments": {
+      "feature": "Funzionalità",
+      "bug": "Bug"
+    },
+    "labels": {
+      "title": "Titolo",
+      "description": "Descrizione"
+    },
+    "placeholders": {
+      "feature": {
+        "title": "AI, pagamenti, ecc.",
+        "description": "es. Vorrei vedere l'AI nella mia chat"
+      },
+      "bug": {
+        "title": "Problema di accesso, crash dell'app, ecc.",
+        "description": "es. L'app si blocca quando provo a caricare una foto del profilo"
+      }
+    },
+    "submit": {
+      "feature": "Invia richiesta funzionalità",
+      "bug": "Invia segnalazione bug"
+    },
+    "alerts": {
+      "success": {
+        "feature": {
+          "title": "Funzionalità richiesta",
+          "message": "La tua richiesta di funzionalità è stata inviata con successo!"
+        },
+        "bug": {
+          "title": "Bug segnalato",
+          "message": "La tua segnalazione di bug è stata inviata con successo!"
+        }
+      },
+      "error": {
+        "feature": {
+          "title": "Errore",
+          "message": "Impossibile inviare la richiesta di funzionalità. Per favore riprova."
+        },
+        "bug": {
+          "title": "Errore",
+          "message": "Impossibile inviare la segnalazione di bug. Per favore riprova."
+        }
+      }
+    }
+  },
+  "settings": {
+    "screen_title": "Impostazioni",
+    "language": {
+      "title": "Lingua",
+      "confirm": "Conferma",
+      "alerts": {
+        "success": {
+          "title": "Successo",
+          "message": "Lingua aggiornata con successo"
+        },
+        "error": {
+          "title": "Errore",
+          "message": "Impossibile aggiornare la lingua. Per favore riprova."
+        }
+      }
+    },
+    "email": "Email",
+    "subscription": {
+      "title": "Abbonamento",
+      "status": {
+        "free": "Gratuito",
+        "premium": "Premium"
+      }
+    },
+    "upgrade": "Aggiorna",
+    "restore_purchases": "Ripristina acquisti",
+    "delete_account": "Elimina account",
+    "logout": "Esci",
+    "alerts": {
+      "delete_account": {
+        "title": "Elimina account",
+        "message": "Sei sicuro di voler eliminare il tuo account? Questa azione non può essere annullata.",
+        "confirm": "Elimina",
+        "cancel": "Annulla"
+      }
+    }
+  },
+  "app_info": {
+    "title": "Informazioni sull'app",
+    "version": "Versione: {{version}}",
+    "copyright": "© {{year}} Launchtoday",
+    "close": "Chiudi"
+  },
+  "errors": {
+    "titles": {
+      "default": "Errore",
+      "invalid_credentials": "Credenziali non valide",
+      "session_expired": "Sessione scaduta",
+      "network_error": "Errore di rete",
+      "signin_failed": "Accesso fallito",
+      "connection_error": "Errore di connessione",
+      "too_many_requests": "Troppe richieste",
+      "server_error": "Errore del server",
+      "payment_failed": "Pagamento fallito",
+      "payment_cancelled": "Pagamento annullato",
+      "invalid_amount": "Importo non valido",
+      "offering_unavailable": "Offerta non disponibile",
+      "package_unavailable": "Pacchetto non disponibile",
+      "purchase_failed": "Acquisto fallito",
+      "signin_cancelled": "Accesso annullato",
+      "privacy_policy_error": "Errore politica sulla privacy",
+      "submission_failed": "Invio fallito",
+      "validation_error": "Errore di validazione",
+      "signout_failed": "Disconnessione fallita",
+      "account_deletion_failed": "Eliminazione account fallita",
+      "user_data_missing": "Dati utente mancanti",
+      "authentication_error": "Errore di autenticazione",
+      "invalid_redirect": "Reindirizzamento non valido",
+      "paywall_error": "Errore paywall",
+      "browser_error": "Errore del browser",
+      "session_error": "Errore di sessione",
+      "customer_error": "Errore cliente",
+      "authorization_error": "Errore di autorizzazione",
+      "request_error": "Errore di richiesta",
+      "request_timeout": "Timeout della richiesta",
+      "upload_failed": "Caricamento fallito",
+      "image_load_failed": "Caricamento immagine fallito",
+      "image_picker_failed": "Selezione immagine fallita",
+      "invalid_image_url": "URL immagine non valido",
+      "image_too_large": "Immagine troppo grande",
+      "invalid_image_format": "Formato immagine non valido",
+      "profile_creation_failed": "Creazione profilo fallita",
+      "profile_load_failed": "Caricamento profilo fallito",
+      "profile_update_failed": "Aggiornamento profilo fallito",
+      "profile_not_found": "Profilo non trovato",
+      "database_error": "Errore database"
+    },
+    "messages": {
+      "default": "Si è verificato un errore imprevisto",
+      "invalid_credentials": "Email o password non valida",
+      "session_expired": "La tua sessione è scaduta. Per favore accedi di nuovo",
+      "auth_network_error": "Impossibile connettersi al servizio di autenticazione",
+      "payment_failed": "Il pagamento non può essere elaborato",
+      "payment_cancelled": "Il pagamento è stato annullato",
+      "payment_invalid_amount": "Importo di pagamento non valido",
+      "network_error": "Errore di connessione di rete",
+      "rate_limit": "Troppe richieste. Per favore riprova più tardi",
+      "server_error": "Errore del server. Per favore riprova più tardi",
+      "validation_error": "Per favore verifica i tuoi dati e riprova",
+      "offering_unavailable": "L'offerta di abbonamento non è attualmente disponibile",
+      "package_unavailable": "Il pacchetto selezionato non è attualmente disponibile",
+      "purchase_failed": "L'acquisto non può essere completato",
+      "paywall_error": "Impossibile visualizzare le opzioni di abbonamento",
+      "apple_signin_failed": "Impossibile accedere con Apple",
+      "google_signin_failed": "Impossibile accedere con Google",
+      "email_signin_failed": "Impossibile inviare il link di accesso",
+      "signout_failed": "Impossibile disconnettersi",
+      "delete_account_failed": "Impossibile eliminare l'account",
+      "no_user_data": "Nessun dato utente ricevuto",
+      "token_missing": "Token di autenticazione mancante",
+      "invalid_redirect": "Reindirizzamento di autenticazione non valido",
+      "google_signin_cancelled": "Accesso con Google annullato",
+      "apple_signin_cancelled": "Accesso con Apple annullato",
+      "browser_error": "Impossibile aprire il browser",
+      "privacy_policy_error": "Impossibile aprire la politica sulla privacy",
+      "stripe_session_error": "Impossibile validare la tua sessione",
+      "stripe_payment_intent_error": "Impossibile creare il pagamento",
+      "stripe_customer_error": "Impossibile elaborare le informazioni del cliente",
+      "stripe_authorization_error": "Autorizzazione del pagamento fallita",
+      "stripe_request_error": "Impossibile elaborare la richiesta di pagamento",
+      "stripe_request_timeout": "Timeout della richiesta. Per favore riprova",
+      "profile_image_upload_failed": "Impossibile caricare l'immagine del profilo",
+      "profile_image_fetch_failed": "Impossibile caricare l'immagine",
+      "profile_image_picker_failed": "Impossibile selezionare l'immagine",
+      "profile_image_url_invalid": "URL immagine non valido",
+      "profile_image_too_large": "L'immagine è troppo grande",
+      "profile_image_format_invalid": "Formato immagine non valido",
+      "db_profile_create_failed": "Impossibile creare il profilo utente",
+      "db_profile_fetch_failed": "Impossibile recuperare il profilo utente",
+      "db_profile_update_failed": "Impossibile aggiornare il profilo utente",
+      "db_profile_not_found": "Profilo utente non trovato",
+      "db_operation_failed": "Operazione database fallita",
+      "db_feedback_submit_failed": "Impossibile inviare il feedback"
+    },
+    "actions": {
+      "retry": "Riprova",
+      "login": "Accedi",
+      "back": "Indietro",
+      "home": "Home"
+    },
+    "not_found": {
+      "title": "Pagina non trovata",
+      "message": "La pagina che stai cercando non esiste."
+    }
+  }
+}

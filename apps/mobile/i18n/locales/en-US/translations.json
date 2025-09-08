@@ -1,0 +1,339 @@
+{
+  "auth": {
+    "title": "Launching your next mobile app",
+    "title_emphasis": "just got easier",
+    "continue_with_google": "Continue with Google",
+    "continue_with_email": "Continue with email",
+    "privacy_policy_agreement": "By signing up, you agree to our",
+    "privacy_policy_link": "privacy policy",
+    "email_input": {
+      "title": "Enter your email",
+      "placeholder": "john@doe.com",
+      "continue": "Continue",
+      "back": "Back"
+    },
+    "magic_link": {
+      "title": "Check your email",
+      "sent_to": "We've sent an email to:",
+      "description": "It has a magic link that will sign you in to the app",
+      "open_email": "Open email"
+    }
+  },
+  "dashboard": {
+    "screen_title": "Dashboard",
+    "welcome_title": "Welcome to Launchtoday",
+    "subtitle": "Launchtoday is a production ready starter kit to ship your next AI, chat, e-commerce (and more) mobile app.",
+    "quick_start": {
+      "title": "Quick to get started",
+      "description": "Hit the ground running with our pre-configured setup. Start building your app features right away without the initial setup hassle."
+    },
+    "latest_tools": {
+      "title": "Supports latest tools",
+      "description": "Stay ahead with cutting-edge React Native tools and libraries. We keep the boilerplate updated with the most recent and efficient development tools."
+    },
+    "support": {
+      "title": "Ongoing support and features",
+      "description": "Benefit from continuous updates and community-driven feature requests. We're committed to evolving Launchtoday based on developer needs."
+    }
+  },
+  "drawer": {
+    "home": "Home",
+    "payments": "Payments",
+    "profile": "Profile",
+    "feedback": "Feedback",
+    "settings": "Settings"
+  },
+  "payments": {
+    "screen_title": "Payments",
+    "stripe": {
+      "title": "Stripe",
+      "description": "Make one-off payments via the pre-built Stripe UI.",
+      "screen": {
+        "title": "Stripe",
+        "integration_title": "Stripe Integration",
+        "subtitle": "Process payments securely with Stripe. Launchtoday supports Stripe for flexible payment options and seamless transactions.",
+        "amount_label": "Enter amount:",
+        "amount_placeholder": "0.00",
+        "pay_with_stripe": "Pay with Stripe",
+        "or": "Or",
+        "errors": {
+          "client_secret": "Failed to fetch client secret",
+          "payment_sheet_init": "There was a problem making the payment",
+          "try_again": "Please try again later",
+          "apple_pay": "There was a problem completing the payment with Apple Pay",
+          "purchase_error": "There was a problem making the purchase",
+          "internal_error": "Internal error when completing the payment with Apple Pay",
+          "timeout": {
+            "payment": "Payment request timed out. Please try again.",
+            "sheet_init": "Payment sheet initialization timed out. Please try again.",
+            "presentation": "Payment presentation timed out. Please try again.",
+            "platform_pay": "Platform pay confirmation timed out. Please try again."
+          }
+        },
+        "alerts": {
+          "error": {
+            "title": "Payment Error",
+            "message": "An error occurred during payment. Please try again."
+          },
+          "success": {
+            "title": "Payment Success",
+            "message": "Your payment was successful!"
+          }
+        },
+        "merchant": {
+          "name": "Example, Inc.",
+          "default_name": "Jane Doe"
+        }
+      }
+    },
+    "revenuecat": {
+      "title": "RevenueCat",
+      "description": "Perform In-App Purchases and Purchase Subscriptions.",
+      "screen": {
+        "title": "RevenueCat",
+        "integration_title": "RevenueCat Integration",
+        "subtitle": "Unlock premium features with seamless in-app subscriptions and one-time purchases.",
+        "purchase_single_item": "Purchase Single Item",
+        "subscribe_button": "Subscribe to Launchtoday Plus",
+        "already_subscribed": "Already subscribed! 🎉",
+        "alerts": {
+          "already_subscribed": {
+            "title": "You've already subscribed",
+            "message": "You already have access to the premium features 🎉"
+          },
+          "success": {
+            "title": "Success",
+            "message": "Your purchase was successful!"
+          }
+        }
+      }
+    },
+    "superwall": {
+      "title": "Superwall",
+      "description": "Quickly build & test paywalls without shipping updates",
+      "coming_soon": "Coming Soon"
+    }
+  },
+  "profile": {
+    "screen_title": "Profile",
+    "labels": {
+      "username": "Username",
+      "website": "Website",
+      "bio": "Bio"
+    },
+    "placeholders": {
+      "username": "Enter your username",
+      "website": "Enter your website",
+      "bio": "Tell us about yourself"
+    },
+    "status": {
+      "saving": "Saving",
+      "saved": "Saved"
+    },
+    "image": {
+      "errors": {
+        "too_large": "Image size exceeds 5MB limit",
+        "invalid_format": "Only JPG and PNG formats are supported",
+        "upload_failed": "Failed to upload image",
+        "url_invalid": "Failed to get URL for uploaded image",
+        "picker_failed": "Failed to pick image"
+      },
+      "alerts": {
+        "upload_error": "Upload Error",
+        "selection_error": "Image Selection Error"
+      }
+    }
+  },
+  "feedback": {
+    "screen_title": "Feedback",
+    "segments": {
+      "feature": "Feature",
+      "bug": "Bug"
+    },
+    "labels": {
+      "title": "Title",
+      "description": "Description"
+    },
+    "placeholders": {
+      "feature": {
+        "title": "AI, payments, etc.",
+        "description": "e.g. I want to see AI in my chat"
+      },
+      "bug": {
+        "title": "Login issue, app crash, etc.",
+        "description": "e.g. The app crashes when I try to upload a profile picture"
+      }
+    },
+    "submit": {
+      "feature": "Submit Feature Request",
+      "bug": "Submit Bug Report"
+    },
+    "alerts": {
+      "success": {
+        "feature": {
+          "title": "Feature Requested",
+          "message": "Your feature request has been submitted successfully!"
+        },
+        "bug": {
+          "title": "Bug Reported",
+          "message": "Your bug report has been submitted successfully!"
+        }
+      },
+      "error": {
+        "feature": {
+          "title": "Error",
+          "message": "Failed to submit feature request. Please try again."
+        },
+        "bug": {
+          "title": "Error",
+          "message": "Failed to submit bug report. Please try again."
+        }
+      }
+    }
+  },
+  "settings": {
+    "screen_title": "Settings",
+    "language": {
+      "title": "Language",
+      "confirm": "Confirm",
+      "alerts": {
+        "success": {
+          "title": "Success",
+          "message": "Language updated successfully"
+        },
+        "error": {
+          "title": "Error",
+          "message": "Failed to update language. Please try again."
+        }
+      }
+    },
+    "email": "Email",
+    "subscription": {
+      "title": "Subscription",
+      "status": {
+        "free": "Free",
+        "premium": "Premium"
+      }
+    },
+    "upgrade": "Upgrade",
+    "restore_purchases": "Restore Purchases",
+    "delete_account": "Delete Account",
+    "logout": "Logout",
+    "alerts": {
+      "delete_account": {
+        "title": "Delete Account",
+        "message": "Are you sure you want to delete your account? This action cannot be undone.",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      }
+    }
+  },
+  "app_info": {
+    "title": "App Information",
+    "version": "Version: {{version}}",
+    "copyright": "© {{year}} Launchtoday",
+    "close": "Close"
+  },
+  "errors": {
+    "titles": {
+      "default": "Error",
+      "invalid_credentials": "Invalid Credentials",
+      "session_expired": "Session Expired",
+      "network_error": "Network Error",
+      "signin_failed": "Sign In Failed",
+      "connection_error": "Connection Error",
+      "too_many_requests": "Too Many Requests",
+      "server_error": "Server Error",
+      "payment_failed": "Payment Failed",
+      "payment_cancelled": "Payment Cancelled",
+      "invalid_amount": "Invalid Amount",
+      "offering_unavailable": "Offering Unavailable",
+      "package_unavailable": "Package Unavailable",
+      "purchase_failed": "Purchase Failed",
+      "signin_cancelled": "Sign In Cancelled",
+      "privacy_policy_error": "Privacy Policy Error",
+      "submission_failed": "Submission Failed",
+      "validation_error": "Validation Error",
+      "signout_failed": "Sign Out Failed",
+      "account_deletion_failed": "Account Deletion Failed",
+      "user_data_missing": "User Data Missing",
+      "authentication_error": "Authentication Error",
+      "invalid_redirect": "Invalid Redirect",
+      "paywall_error": "Paywall Error",
+      "browser_error": "Browser Error",
+      "session_error": "Session Error",
+      "customer_error": "Customer Error",
+      "authorization_error": "Authorization Error",
+      "request_error": "Request Error",
+      "request_timeout": "Request Timeout",
+      "upload_failed": "Upload Failed",
+      "image_load_failed": "Image Load Failed",
+      "image_picker_failed": "Image Picker Failed",
+      "invalid_image_url": "Invalid Image URL",
+      "image_too_large": "Image Too Large",
+      "invalid_image_format": "Invalid Image Format",
+      "profile_creation_failed": "Profile Creation Failed",
+      "profile_load_failed": "Profile Load Failed",
+      "profile_update_failed": "Profile Update Failed",
+      "profile_not_found": "Profile Not Found",
+      "database_error": "Database Error"
+    },
+    "messages": {
+      "default": "An unexpected error occurred",
+      "invalid_credentials": "Invalid email or password",
+      "session_expired": "Your session has expired. Please sign in again",
+      "auth_network_error": "Unable to connect to authentication service",
+      "payment_failed": "Unable to process payment",
+      "payment_cancelled": "Payment was cancelled",
+      "payment_invalid_amount": "Invalid payment amount",
+      "network_error": "Network connection error",
+      "rate_limit": "Too many requests. Please try again later",
+      "server_error": "Server error. Please try again later",
+      "validation_error": "Please check your input and try again",
+      "offering_unavailable": "The subscription offering is currently unavailable",
+      "package_unavailable": "The selected package is currently unavailable",
+      "purchase_failed": "Unable to complete the purchase",
+      "paywall_error": "Unable to display subscription options",
+      "apple_signin_failed": "Unable to sign in with Apple",
+      "google_signin_failed": "Unable to sign in with Google",
+      "email_signin_failed": "Unable to send login link",
+      "signout_failed": "Unable to sign out",
+      "delete_account_failed": "Unable to delete account",
+      "no_user_data": "No user data received",
+      "token_missing": "Authentication token is missing",
+      "invalid_redirect": "Invalid authentication redirect",
+      "google_signin_cancelled": "Google sign in was cancelled",
+      "apple_signin_cancelled": "Apple sign in was cancelled",
+      "browser_error": "Unable to open browser",
+      "privacy_policy_error": "Unable to open privacy policy",
+      "stripe_session_error": "Unable to validate your session",
+      "stripe_payment_intent_error": "Unable to create payment",
+      "stripe_customer_error": "Unable to process customer information",
+      "stripe_authorization_error": "Payment authorization failed",
+      "stripe_request_error": "Unable to process payment request",
+      "stripe_request_timeout": "Request timed out. Please try again",
+      "profile_image_upload_failed": "Unable to upload profile image",
+      "profile_image_fetch_failed": "Unable to load profile image",
+      "profile_image_picker_failed": "Unable to select image",
+      "profile_image_url_invalid": "Invalid image URL",
+      "profile_image_too_large": "Image size is too large",
+      "profile_image_format_invalid": "Invalid image format",
+      "db_profile_create_failed": "Unable to create user profile",
+      "db_profile_fetch_failed": "Unable to fetch user profile",
+      "db_profile_update_failed": "Unable to update user profile",
+      "db_profile_not_found": "User profile not found",
+      "db_operation_failed": "Database operation failed",
+      "db_feedback_submit_failed": "Unable to submit feedback"
+    },
+    "actions": {
+      "retry": "Try Again",
+      "login": "Sign In",
+      "back": "Go Back",
+      "home": "Go Home"
+    },
+    "not_found": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist."
+    }
+  }
+}
