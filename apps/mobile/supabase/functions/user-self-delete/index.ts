@@ -3,8 +3,7 @@
 /// <reference types="https://esm.sh/@supabase/functions-js/src/edge-runtime.d.ts" />
 
 import { serve } from "https://deno.land/std@0.182.0/http/server.ts";
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.14.0";
-
+import { createClient } from "@supabase/supabase-js";
 // cSpell:ignore supabase apikey
 
 // Follow this setup guide to integrate the Deno language server with your editor:

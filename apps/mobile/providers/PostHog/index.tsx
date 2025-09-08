@@ -1,5 +1,4 @@
 import * as PostHog from "posthog-react-native";
-import { useEffect } from "react";
 
 export const PostHogProvider = ({
   children,

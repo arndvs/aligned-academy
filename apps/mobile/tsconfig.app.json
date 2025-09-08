@@ -7,5 +7,5 @@
     "types": ["node", "expo-router"]
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "i18n/locales/**/*.json"],
-  "exclude": ["**/*.spec.*", "**/*.test.*", "jest.config.ts", "jest.resolver.js", "supabase/functions/**"]
+  "exclude": ["**/*.spec.*", "**/*.test.*", "jest.config.ts", "jest.resolver.js", "supabase/functions/**/**"]
 }
