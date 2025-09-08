@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "@/components/SafeAreaView";
 import { Text } from "@/components/Themed";
@@ -25,7 +26,9 @@ import Animated, {
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Localization from "expo-localization";
+
+import * as Localization from 'expo-localization';
+
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,10 +49,12 @@ export default function Login() {
   const { signInWithApple, signInWithGoogle } = useSession();
 
   useEffect(() => {
-    AsyncStorage.removeItem("@app_language").then(() => {
+    AsyncStorage.removeItem('@app_language').then(() => {
       // Force reload i18n with device locale
-      const deviceLocale = Localization.locale;
-      const languageCode = deviceLocale.split("-")[0];
+      const deviceLocale =
+        Localization.getLocales()[0]?.languageTag ?? 'en-US';
+
+      const languageCode = deviceLocale.split('-')[0];
       i18n.changeLanguage(languageCode);
     });
 
@@ -113,18 +118,19 @@ export default function Login() {
           style={[styles.buttonContainer, buttonContainerAnimatedStyle]}
         >
           <AppleAuthentication.AppleAuthenticationButton
-            buttonType={
-              AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
-            }
-            buttonStyle={
-              isDarkMode
-                ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
-                : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
-            }
-            cornerRadius={5}
-            style={styles.button}
-            onPress={() => signInWithApple(() => {})}
-          />
+              buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+              buttonStyle={
+                isDarkMode
+                  ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+                  : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+              }
+              cornerRadius={5}
+              style={styles.button}
+              onPress={() => {
+                setIsLoading(true);
+                signInWithApple(() => setIsLoading(false));
+              }}
+            />
 
           <Pressable
             style={({ pressed }) => [

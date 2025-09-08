@@ -24,6 +24,13 @@ import { useSession } from "@/providers/Auth";
 import ProfileImage from "@/components/ProfilePicture";
 import { EvilIcons } from "@expo/vector-icons";
 
+type ProfileUpdates = Partial<{
+  username: string;
+  website: string;
+  bio: string;
+  avatar_url: string;
+}>;
+
 const ProfileScreen = () => {
   const { t } = useTranslation();
   const [username, setUsername] = useState("");
@@ -35,9 +42,7 @@ const ProfileScreen = () => {
   const savingAnimationRef = useRef<Animated.CompositeAnimation | null>(null);
   const savedAnimationRef = useRef<Animated.CompositeAnimation | null>(null);
 
-  const [debouncedSave, setDebouncedSave] = useState<NodeJS.Timeout | null>(
-    null
-  );
+  const debouncedSave = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { user } = useSession();
   const savingOpacity = useRef(new Animated.Value(0)).current;
   const savingTranslateY = useRef(new Animated.Value(-50)).current;
@@ -54,37 +59,40 @@ const ProfileScreen = () => {
     fetchProfile();
   }, []);
 
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
     if (!user) return;
-
     try {
       const profile = await getProfile(user.id);
-
       if (profile) {
         setUsername(profile.username || "");
         setWebsite(profile.website || "");
         setBio(profile.bio || "");
         setAvatarPath(profile.avatar_url || undefined);
       }
-    } catch (error) {
-      console.error("Error fetching profile:", error);
+    } catch (e) {
+      console.error("Error fetching profile:", e);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+
 
   const updateProfileDebounced = useCallback(
-    (updates: any) => {
+    (updates: ProfileUpdates) => {
       if (!user) return;
 
       setShouldShowSaving(true);
       setShouldShowSaved(false);
 
-      if (debouncedSave) {
-        clearTimeout(debouncedSave);
+      if (debouncedSave.current) {
+        clearTimeout(debouncedSave.current);
       }
 
-      const newDebouncedSave = setTimeout(async () => {
+      debouncedSave.current = setTimeout(async () => {
         try {
           await updateProfile(user.id, updates);
           setShouldShowSaved(true);
@@ -94,10 +102,8 @@ const ProfileScreen = () => {
           setShouldShowSaving(false);
         }
       }, 2000);
-
-      setDebouncedSave(newDebouncedSave);
     },
-    [user, debouncedSave]
+    [user]
   );
 
   useEffect(() => {

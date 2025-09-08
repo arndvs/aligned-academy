@@ -1,9 +1,15 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
+
+
+/// <reference types="https://esm.sh/@supabase/functions-js/src/edge-runtime.d.ts" />
 
 import { serve } from "https://deno.land/std@0.182.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.14.0";
+
+// cSpell:ignore supabase apikey
+
+// Follow this setup guide to integrate the Deno language server with your editor:
+// https://deno.land/manual/getting_started/setup_your_environment
+// This enables autocomplete, go to definition, etc.
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -89,9 +95,10 @@ serve(async (req: Request) => {
       }
     );
   } catch (error) {
-    console.error("Error deleting user:", error.message);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    console.error("Error deleting user:", errorMessage);
 
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 400,
     });

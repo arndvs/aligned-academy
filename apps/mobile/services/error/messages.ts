@@ -1,5 +1,6 @@
 import { ErrorCode } from "./types";
 
+// cSpell:ignore REVENUECAT
 export const ERROR_MESSAGES: Record<ErrorCode, string> = {
   // Auth Error Messages
   [ErrorCode.AUTH_INVALID_CREDENTIALS]: "Invalid email or password",
@@ -52,6 +53,7 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
   [ErrorCode.STRIPE_CUSTOMER_ERROR]: "Unable to process customer information",
   [ErrorCode.STRIPE_AUTHORIZATION_ERROR]: "Payment authorization failed",
   [ErrorCode.STRIPE_REQUEST_ERROR]: "Unable to process payment request",
+  [ErrorCode.STRIPE_REQUEST_TIMEOUT]: "Payment request timed out",
 
   // Profile Image Messages
   [ErrorCode.PROFILE_IMAGE_UPLOAD_FAILED]: "Unable to upload profile image",

@@ -1,23 +1,41 @@
-import React from "react";
-import * as Stripe from "@stripe/stripe-react-native";
+import React, { ReactElement } from "react";
 import {
+  StripeProvider as RNStripeProvider,
   initPaymentSheet,
   presentPaymentSheet,
+  confirmPlatformPayPayment,
+  isPlatformPaySupported,
+  PlatformPay,
+  PlatformPayButton,
 } from "@stripe/stripe-react-native";
 
-export const StripeProvider: React.FC<{
+type Props = {
   publishableKey: string;
   merchantIdentifier: string;
-  children: JSX.Element | JSX.Element[];
-}> = ({ publishableKey, merchantIdentifier, children }) => {
+  children: ReactElement | ReactElement[];
+};
+
+export const AppStripeProvider: React.FC<Props> = ({
+  publishableKey,
+  merchantIdentifier,
+  children,
+}) => {
   return (
-    <Stripe.StripeProvider
-      merchantIdentifier={merchantIdentifier}
+    <RNStripeProvider
       publishableKey={publishableKey}
+      merchantIdentifier={merchantIdentifier}
     >
       {children}
-    </Stripe.StripeProvider>
+    </RNStripeProvider>
   );
 };
 
-export { initPaymentSheet, presentPaymentSheet };
+// Re-exports so the rest of the app can import from here
+export {
+  initPaymentSheet,
+  presentPaymentSheet,
+  confirmPlatformPayPayment,
+  isPlatformPaySupported,
+  PlatformPay,
+  PlatformPayButton,
+};

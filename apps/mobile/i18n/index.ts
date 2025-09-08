@@ -66,7 +66,7 @@ const initI18n = async () => {
       if (deviceLocale in resources) {
         selectedLanguage = deviceLocale;
       }
-  
+
       // Then try language code match
       else if (languageCode in resources) {
         selectedLanguage = languageCode;

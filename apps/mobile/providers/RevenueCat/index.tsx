@@ -1,37 +1,32 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, type ReactNode } from "react";
 import { Platform } from "react-native";
 import Purchases, { LOG_LEVEL } from "react-native-purchases";
 
 Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
 
 type RevenueCatProviderProps = {
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode;
 };
 
-export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({
-  children,
-}: RevenueCatProviderProps): JSX.Element => {
+export const RevenueCatProvider: React.FC<RevenueCatProviderProps> = ({ children }) => {
   const appleApiKey = process.env.EXPO_PUBLIC_REVENUECAT_APPLE_API_KEY;
   const androidApiKey = process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE_API_KEY;
 
   if (!appleApiKey || !androidApiKey) {
     console.error(
-      "appleApiKey or androidApiKey is not set. Ensure that REVENUECAT_APPLE_API_KEY and REVENUECAT_ANDROID_API_KEY is set in your environment variables."
+      "appleApiKey or androidApiKey is not set. Ensure that EXPO_PUBLIC_REVENUECAT_APPLE_API_KEY and EXPO_PUBLIC_REVENUECAT_GOOGLE_API_KEY are set."
     );
   }
 
   useEffect(() => {
-    async function setupRevenueCat() {
-      if (Platform.OS === "ios") {
-        Purchases.configure({ apiKey: String(appleApiKey) });
-      } else if (Platform.OS === "android") {
-        Purchases.configure({ apiKey: String(androidApiKey) });
-      }
+    // Configure once on mount (or when keys/platform change)
+    if (Platform.OS === "ios" && appleApiKey) {
+      Purchases.configure({ apiKey: appleApiKey });
+    } else if (Platform.OS === "android" && androidApiKey) {
+      Purchases.configure({ apiKey: androidApiKey });
     }
+  }, [appleApiKey, androidApiKey]);
 
-    setupRevenueCat();
-  }, []);
 
-  return <>{children}</>;
+  return children as React.ReactElement | null;
 };

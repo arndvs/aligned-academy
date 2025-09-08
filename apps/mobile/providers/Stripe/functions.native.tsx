@@ -1,4 +1,3 @@
-import { PaymentSheetConfig } from "@/types/types";
 import {
   initPaymentSheet as nativeInitPaymentSheet,
   presentPaymentSheet as nativePresentPaymentSheet,
@@ -8,15 +7,17 @@ import {
   isPlatformPaySupported,
 } from "@stripe/stripe-react-native";
 
-export const initPaymentSheet = async (
-  paymentSheetConfig: PaymentSheetConfig
-) => {
-  return await nativeInitPaymentSheet(paymentSheetConfig);
-};
+// Type-safe across versions (no direct type imports needed)
+type InitSheetParams = Parameters<typeof nativeInitPaymentSheet>[0];
+type InitSheetResult = Awaited<ReturnType<typeof nativeInitPaymentSheet>>;
+type PresentSheetResult = Awaited<ReturnType<typeof nativePresentPaymentSheet>>;
 
-export const presentPaymentSheet = async () => {
-  return await nativePresentPaymentSheet();
-};
+export const initPaymentSheet = (
+  paymentSheetConfig: InitSheetParams
+): Promise<InitSheetResult> => nativeInitPaymentSheet(paymentSheetConfig);
+
+export const presentPaymentSheet = (): Promise<PresentSheetResult> =>
+  nativePresentPaymentSheet();
 
 export {
   PlatformPay,

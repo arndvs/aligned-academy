@@ -57,7 +57,7 @@ export default function SettingsScreen() {
         }
 
         // If no saved language, use device locale
-        const deviceLocale = Localization.locale;
+        const deviceLocale = Localization.getLocales()[0]?.languageTag || "en-US";
         const languageCode = deviceLocale.split("-")[0];
 
         // Try exact locale match first

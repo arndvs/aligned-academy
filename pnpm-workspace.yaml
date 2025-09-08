@@ -1,2 +1,5 @@
-autoInstallPeers: true
-strictPeerDependencies: false
+packages:
+  - 'apps/*'
+  - 'libs/*'
+  - 'libs/*/*'   # because you have libs like libs/data-access/supabase
+  - 'tools/*'

@@ -14,7 +14,6 @@ export const PostHogProvider = ({
       }}
       autocapture={{
         captureScreens: true,
-        captureLifecycleEvents: true,
         captureTouches: true,
         navigation: {
           routeToName: (name) => name,

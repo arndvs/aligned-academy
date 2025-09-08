@@ -1,38 +1,37 @@
+import { Text, View, useThemeColor } from "@/components/Themed";
+import i18n, { CURRENCY_MAP } from "@/i18n";
 import {
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Keyboard,
-  ScrollView,
-  TextInput,
-  Alert,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+  PlatformPay,
+  PlatformPayButton,
+  confirmPlatformPayPayment,
+  initPaymentSheet,
+  isPlatformPaySupported,
+  presentPaymentSheet,
+} from "@/providers/Stripe/functions";
+import { createPaymentIntentClientSecret } from "@/services/stripe";
+import { commonStyles } from "@/styles/common";
+import { typography } from "@/styles/typography";
 import {
   responsiveFontSize,
   responsiveHeight,
   responsiveWidth,
 } from "@/utils/responsive";
-import { typography } from "@/styles/typography";
-import { commonStyles } from "@/styles/common";
-import { useEffect, useRef, useState } from "react";
-import { Text, View, useThemeColor } from "@/components/Themed";
 import { Image } from "expo-image";
-import {
-  initPaymentSheet,
-  presentPaymentSheet,
-  PlatformPay,
-  PlatformPayButton,
-  confirmPlatformPayPayment,
-  isPlatformPaySupported,
-} from "@/providers/Stripe/functions";
-import { createPaymentIntentClientSecret } from "@/services/stripe";
-import { router } from "expo-router";
-import { useTranslation } from "react-i18next";
 import { Stack } from "expo-router";
-import i18n, { CURRENCY_MAP } from "@/i18n";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import {
+  ActivityIndicator,
+  Alert,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 const stripeLogo = require("../../../assets/images/stripe.png");
 
@@ -41,18 +40,20 @@ interface StripeError {
   message?: string;
   localizedMessage?: string;
 }
+type ConfirmResult = { error?: StripeError };
 
-interface PaymentResponse {
-  customer?: string;
-  clientSecret?: string;
+type StripePaymentIntentResponse = {
+  customer: string | null;
+  clientSecret: string | null;
   error?: StripeError;
-}
+};
+
 
 export default function StripeScreen() {
   const scrollViewRef = useRef<ScrollView>(null);
   const inputRef = useRef<TextInput>(null);
-  const checkoutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const platformPayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const checkoutTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+const platformPayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [enteredAmount, setEnteredAmount] = useState<number | null>(null);
   const [isAppleOrGooglePaySupported, setIsAppleOrGooglePaySupported] =
     useState(false);
@@ -89,6 +90,11 @@ export default function StripeScreen() {
   const { currency, symbol } =
     CURRENCY_MAP[currentLocale] || CURRENCY_MAP["en-US"];
 
+    const toMessage = (e: unknown) =>
+      (e as StripeError)?.localizedMessage ||
+      (e as StripeError)?.message ||
+      (typeof e === "string" ? e : "Unexpected error");
+
   useEffect(() => {
     return () => {
       if (checkoutTimeoutRef.current) {
@@ -119,20 +125,19 @@ export default function StripeScreen() {
         currency,
       };
 
-      const response = (await Promise.race([
+      const response = await Promise.race<StripePaymentIntentResponse>([
         createPaymentIntentClientSecret(requestBody),
-        new Promise((_, reject) =>
+        new Promise<never>((_, reject) =>
           setTimeout(
             () =>
               reject({
                 code: "STRIPE_TIMEOUT",
                 message: t("payments.stripe.screen.errors.timeout.payment"),
               }),
-            30000
+            30_000
           )
         ),
-      ])) as PaymentResponse;
-
+      ]);
       const { customer, clientSecret } = response;
 
       if (!customer || !clientSecret) {
@@ -188,9 +193,10 @@ export default function StripeScreen() {
       }
 
       // Use a variable to track the internal timeout
-      let presentationTimeoutId: NodeJS.Timeout | undefined;
+      let presentationTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
-      const { error } = await presentPaymentSheet();
+      const presentResult = (await presentPaymentSheet()) as { error?: StripeError } | void;
+      const error = (presentResult && 'error' in presentResult) ? presentResult.error : undefined;
 
       // Clear the internal timeout when we get a response (success or error)
       if (presentationTimeoutId) {
@@ -237,19 +243,19 @@ export default function StripeScreen() {
     platformPayTimeoutRef.current = setTimeout(() => controller.abort(), 30000);
 
     try {
-      const { clientSecret } = await Promise.race([
+      const { clientSecret } = await Promise.race<StripePaymentIntentResponse>([
         createPaymentIntentClientSecret({
-          amount: Number(enteredAmount) * 100,
-          currency: currency,
+          amount: Math.round(Number(enteredAmount) * 100),
+          currency,
         }),
-        new Promise((_, reject) =>
+        new Promise<never>((_, reject) =>
           setTimeout(
             () =>
               reject({
                 code: "STRIPE_TIMEOUT",
                 message: t("payments.stripe.screen.errors.timeout.payment"),
               }),
-            30000
+            30_000
           )
         ),
       ]);
@@ -258,6 +264,7 @@ export default function StripeScreen() {
         throw new Error(t("payments.stripe.screen.errors.client_secret"));
       }
 
+
       // Clear timeout before confirming platform pay to prevent automatic error
       if (platformPayTimeoutRef.current) {
         clearTimeout(platformPayTimeoutRef.current);
@@ -265,9 +272,9 @@ export default function StripeScreen() {
       }
 
       // Use a variable to track the internal timeout
-      let platformPayTimeoutId: NodeJS.Timeout | undefined;
+      let platformPayTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
-      const { error } = await Promise.race([
+      const { error } = await Promise.race<ConfirmResult>([
         confirmPlatformPayPayment(clientSecret, {
           applePay: {
             cartItems: [
@@ -298,16 +305,14 @@ export default function StripeScreen() {
             },
           },
         }),
-        new Promise((_, reject) => {
+        new Promise<never>((_, reject) => {
           platformPayTimeoutId = setTimeout(
             () =>
               reject({
                 code: "STRIPE_TIMEOUT",
-                message: t(
-                  "payments.stripe.screen.errors.timeout.platform_pay"
-                ),
+                message: t("payments.stripe.screen.errors.timeout.platform_pay"),
               }),
-            30000
+            30_000
           );
         }),
       ]);
@@ -329,7 +334,7 @@ export default function StripeScreen() {
           t("payments.stripe.screen.errors.try_again")
         );
 
-        throw new Error(error);
+        throw new Error(toMessage(error));
       } else {
         setEnteredAmount(null);
 
@@ -346,7 +351,7 @@ export default function StripeScreen() {
         t("payments.stripe.screen.errors.try_again")
       );
 
-      throw new Error(error);
+      throw new Error(toMessage(error));
     } finally {
       if (platformPayTimeoutRef.current) {
         clearTimeout(platformPayTimeoutRef.current);
@@ -364,7 +369,7 @@ export default function StripeScreen() {
 
       setIsAppleOrGooglePaySupported(isSupported);
     })();
-  }, [isPlatformPaySupported]);
+  }, []);
 
   return (
     <KeyboardAvoidingView

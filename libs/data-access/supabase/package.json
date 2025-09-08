@@ -1,5 +1,5 @@
 {
-  "name": "@aligned-academy/data-access",
+  "name": "@aligned-academy/data-access/supabase",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
